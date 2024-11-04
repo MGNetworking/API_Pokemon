@@ -6,6 +6,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 const PokemonModel = require("../../src/models/pokemon");
 const UserModel = require("../../src/models/user");
 let mockPokemons = require("./mock-pokemon");
+let bcrypt = require("bcrypt");
 const { types } = require("pg");
 require("dotenv").config();
 
@@ -41,7 +42,7 @@ const userData = UserModel(sequelize, DataTypes);
 // NB: force: true => recreate the table each time you reboot
 const initDB = () => {
   return sequelize.sync({ force: true }).then(() => {
-    // Pokemon Data
+    console.log(`Create table pokemons`);
     mockPokemons.map((pokemon) => {
       PokemonData.create({
         id: pokemon.id,
@@ -53,13 +54,15 @@ const initDB = () => {
       }).then((pokemon) => console.log(pokemon.toJSON()));
     });
 
-    // User data
-    userData
-      .create({
-        username: "maxime",
-        password: "maxime",
-      })
-      .then((user) => console.log("this user is create : ", user));
+    console.log(`Create table users`);
+    bcrypt.hash("maxime", 10).then((hash) => {
+      userData
+        .create({
+          username: "maxime",
+          password: hash,
+        })
+        .then((user) => console.log(user.toJSON()));
+    });
 
     console.log(`Synchronisation of schemas to the "Pokedex" database.`);
   });
