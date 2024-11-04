@@ -32,7 +32,10 @@ npm install sequelize --save
 npm install pg --save
 # harger les variables depuis le fichier
 npm install dotenv --save
-
+# encryption module
+npm install bcrypt --save
+# Json Web token
+npm install jsonwebtoken --save
 ```
 
 l'option: --save-dev this option install the dependancy in file `package.json` in config devDependencies
@@ -45,3 +48,4 @@ nodemon: https://nodemon.io/
 sequelize: https://sequelize.org/
 PostgreSQL Node : https://www.npmjs.com/package/pg
 dotenv: https://www.npmjs.com/package/dotenv#%EF%B8%8F-usage
+bcrypt: https://www.npmjs.com/package/bcrypt
