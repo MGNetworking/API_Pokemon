@@ -146,6 +146,9 @@ app.delete("/api/deletePokemon/:id", async (req, res) => {
   }
 });
 
+// route to user access for login
+require("./src/routes/login")(app);
+
 // gesiton des erreurs du server
 app.use(({ res }) => {
   res.status(404).json("Resource not found , try another resource !!!");
