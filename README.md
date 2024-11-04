@@ -59,12 +59,12 @@ l'option: --save-dev this option install the dependancy in file `package.json` i
 
 ### Documentation
 
-express: https://expressjs.com/
-morgan: https://expressjs.com/en/resources/middleware/morgan.html
-nodemon: https://nodemon.io/
-sequelize: https://sequelize.org/
-PostgreSQL Node : https://www.npmjs.com/package/pg
-dotenv: https://www.npmjs.com/package/dotenv#%EF%B8%8F-usage
+express: https://expressjs.com/  
+morgan: https://expressjs.com/en/resources/middleware/morgan.html  
+nodemon: https://nodemon.io/  
+sequelize: https://sequelize.org/  
+PostgreSQL Node : https://www.npmjs.com/package/pg  
+dotenv: https://www.npmjs.com/package/dotenv#%EF%B8%8F-usage  
 bcrypt: https://www.npmjs.com/package/bcrypt
 
 ### Features
