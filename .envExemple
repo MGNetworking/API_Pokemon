@@ -1,0 +1,7 @@
+DB_NAME=            # Le nom de votre base de données
+DB_USER=            # Le nom d'utilisateur pour la base de données
+DB_PASSWORD=        # Le mot de passe pour l'utilisateur
+DB_HOST=            # L'adresse où se trouve la base de données (localhost si en local)
+DB_PORT=            # Le port utilisé par votre base de données
+DB_SCHEMA=          # Le schéma utilisé dans votre base de données (si nécessaire)
+
