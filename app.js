@@ -8,6 +8,7 @@ const sequelizeConfig = require("./src/db/sequelize");
 const pokemon = require("./src/models/pokemon");
 const { types } = require("pg");
 const { ValidationError, where, Op } = require("sequelize");
+const auth = require("./src/auth/auth");
 
 // express Server config
 const app = express();
@@ -76,7 +77,7 @@ app.get("/api/pokemons", (req, res) => {
 });
 
 // Post pokemons
-app.post("/api/addPokemon", (req, res) => {
+app.post("/api/addPokemon", auth, (req, res) => {
   sequelizeConfig.PokemonData.create(req.body)
     .then((pokemon) => {
       res.json(
@@ -97,7 +98,7 @@ app.post("/api/addPokemon", (req, res) => {
 });
 
 // update pokemons
-app.put("/api/updatePokemon", (req, res) => {
+app.put("/api/updatePokemon", auth, (req, res) => {
   sequelizeConfig.PokemonData.update(req.body, {
     where: { id: req.body.id },
   })
@@ -126,7 +127,7 @@ app.put("/api/updatePokemon", (req, res) => {
 });
 
 // delete pokemons
-app.delete("/api/deletePokemon/:id", async (req, res) => {
+app.delete("/api/deletePokemon/:id", auth, async (req, res) => {
   const id = parseInt(req.params.id);
 
   try {

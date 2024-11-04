@@ -1,6 +1,8 @@
 /* Authentication: Creating a User model with Sequelize */
 const { userData } = require("../db/sequelize");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const privateKey = require("../auth/private_key");
 
 module.exports = (app) => {
   app.post("/api/login", (req, res) => {
@@ -20,8 +22,13 @@ module.exports = (app) => {
               return res.status(401).json({ message: msg, data: user });
             }
 
+            // jwt
+            const token = jwt.sign({ userId: user.id }, privateKey, {
+              expiresIn: "24h",
+            });
+
             const msg = `The user has been logged in successfully`;
-            return res.json({ message: msg, data: user });
+            return res.json({ message: msg, data: user, token: token });
           })
           .catch((error) => {
             const msg =
